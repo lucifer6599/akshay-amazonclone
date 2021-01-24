@@ -11,11 +11,10 @@ import GuardedRoute from "./GuardedRoute";
 import PaymentCombined from "./PaymentCombined";
 import OrdersCombined from "./OrdersCombined";
 
-
 //"src" folder is for the front-end app and "functions" folder is for all the back-end
 
 function App() {
-  const [{ basket,user }, dispatch] = useStateValue();
+  const [{ basket, user }, dispatch] = useStateValue();
 
   useEffect(() => {
     auth.onAuthStateChanged((authUser) => {
@@ -49,16 +48,15 @@ function App() {
             component={CheckoutCombined}
             auth={user}
           />
-         
           <GuardedRoute
             path="/payment"
             component={PaymentCombined}
             auth={user}
           />
-         <GuardedRoute
+          <GuardedRoute
             path="/orders"
             component={OrdersCombined}
-            auth={basket}
+            auth={user}
           />
           <Route path="/">
             <Header />

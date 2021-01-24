@@ -7,7 +7,7 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getBasketTotal } from "./reducer";
 import axios from "./axios";
-
+import { db } from "./firebase";
 function Payment() {
   const [{ basket, user }, dispatch] = useStateValue();
   const [error, setError] = useState(null);
@@ -37,13 +37,10 @@ function Payment() {
   const stripe = useStripe();
   const elements = useElements();
 
-//console.log('THE SECRET CLIENT ID IS>>>',clientSecret);
-
-
+  //console.log('THE SECRET CLIENT ID IS>>>',clientSecret);
 
   const handleSubmit = async (event) => {
     //all stripe function
-
 
     event.preventDefault();
     setProcessing(true);
@@ -56,13 +53,25 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         //paymentIntent=payment confirmation
-         console.log(paymentIntent)
+
+        //using db
+        db
+        .collection('users')
+        .doc(user?.uid) 
+        .collection('orders')
+        .doc(paymentIntent?.id)
+        .set({
+          basket:basket,
+          amount:paymentIntent.amount,
+          created:paymentIntent.created,
+        })
+
         setSucceeded(true);
         setError(null);
         setProcessing(false);
         dispatch({
-          type:'EMPTY_BASKET',
-        })
+          type: "EMPTY_BASKET",
+        });
         history.replace("/orders");
       });
   };
@@ -114,7 +123,7 @@ function Payment() {
           </div>
           <div className="payment__details">
             {/* Stripe functionaity */}
-            <form onClicke={handleSubmit}>
+            <form onClick={handleSubmit}>
               <CardElement onChange={handleChange} />
               <div className="payment__priceContainer">
                 <CurrencyFormat
