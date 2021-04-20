@@ -19,14 +19,15 @@ function Orders() {
             snapshot.docs.map((doc) => ({
               id: doc.id,
               data: doc.data(),
-            }))
+            })) 
           )
         );
+        // console.log("data:",user);
     } else {
       setOrders([]);
     }
   }, []);
-  console.log(orders);
+ 
   return (
     <div className="orders">
       <h1>Your Orders</h1>

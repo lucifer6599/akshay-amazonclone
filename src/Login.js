@@ -32,14 +32,14 @@ function Login() {
         })
         .catch(error=>alert(error.message))
     }
-
+//https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png
   return (
     <div className="login">
       <Link to="/">
         <img
           className="login__logo"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/1024px-Amazon_logo.svg.png"
-          alt=""
+          src="logoshopin.png"
+          alt="ShopIN LOGO"
         />
       </Link>
       <div className="login__container">
@@ -54,10 +54,10 @@ function Login() {
           <button type="submit" className="login__signInButton" onClick={signIn}>Sign In</button>
         </form>
         <p>
-          By signing-in you agree to AKSHAY'S AMAZON-CLONE'S Conditions of Use & Sale. Please
+          By signing-in you agree to TEAM A&P'S ShopIN'S Conditions of Use & Sale. Please
           see our Privacy Notice,our Cookies Notice and our Interest-Based Ads
         </p>
-        <button type="submit" onClick={register} className="login__registerButton">Create your Amazon-Clone Account</button>
+        <button type="submit" onClick={register} className="login__registerButton">Create your ShopIN Account</button>
       </div>
     </div>
   );

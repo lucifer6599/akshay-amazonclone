@@ -69,3 +69,11 @@ function App() {
 }
 
 export default App;
+
+//Task:-
+//Sign in authentication by google
+//reviews
+//api product add
+//return product
+//track order
+//filters/categories

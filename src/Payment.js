@@ -53,10 +53,9 @@ function Payment() {
       })
       .then(({ paymentIntent }) => {
         //paymentIntent=payment confirmation
-
+        //console.log("paymentintent>>"+paymentIntent.amount);
         //using db
-        db
-        .collection('users')
+        db.collection('users')
         .doc(user?.uid) 
         .collection('orders')
         .doc(paymentIntent?.id)
@@ -65,7 +64,7 @@ function Payment() {
           amount:paymentIntent.amount,
           created:paymentIntent.created,
         })
-
+        
         setSucceeded(true);
         setError(null);
         setProcessing(false);
@@ -73,7 +72,9 @@ function Payment() {
           type: "EMPTY_BASKET",
         });
         history.replace("/orders");
-      });
+      }).catch(err=>{
+        console.log("error:"+err);
+      })
   };
   const handleChange = (event) => {
     //listen for changes
@@ -96,7 +97,7 @@ function Payment() {
           <div className="payment__address">
             <p>{user?.email}</p>
             <p>123 React Lane</p>
-            <p>Akshay Sinha's Mansion , Bhopal</p>
+            <p>Lorem Ipsum's Mansion , Bhopal</p>
           </div>
         </div>
         {/*  review items*/}

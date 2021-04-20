@@ -3,6 +3,7 @@ export const initialState = {
   user: null,
 };
 //Selector
+//we put 0 so that atleast we could have a default value as 0
 export const getBasketTotal = (basket) =>
   basket?.reduce((amount, item) => item.price + amount, 0);
 
@@ -23,7 +24,7 @@ const reducer = (state, action) => {
         newBasket.splice(index, 1);
       } else {
         console.warn(
-          `Can't remove product (id: ${action.id} as its not in basket!`
+          `Can't remove product (id: ${action.id}) as its not in basket!`
         );
       }
       return { ...state, basket: newBasket };

@@ -23,7 +23,7 @@ app.use(express.json());
 app.post("/payments/create", async (request, response) => {
   const total = request.query.total;
   console.log(
-    "Payment Request Recieved by Akshay's clone!!! for this amount >>> ",
+    "Payment Request Recieved by ShopIN!!! for this amount >>> ",
     total
   );
   const paymentIntent = await stripe.paymentIntents.create({

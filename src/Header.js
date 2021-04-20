@@ -13,12 +13,14 @@ if(user){
   auth.signOut();
 }
 }
+let username=user?.email.split("@");
+//"http://pngimg.com/uploads/amazon/amazon_PNG11.png"
   return (
     <div className="header">
       <Link to="/">
         <img
           className="header__logo"
-          src="http://pngimg.com/uploads/amazon/amazon_PNG11.png"
+          src="logoshopin.png"
           alt=""
         />
       </Link>
@@ -31,7 +33,7 @@ if(user){
       <div className="header__nav">
         <Link to={!user&&"/login"}>
           <div onClick={handleAuthentication} className="header__option">
-            <span className="header__optionLineOne">Hello {user?user?.email:'Guest'}</span>
+            <span className="header__optionLineOne">Hello {user?username[0]:'Guest'}</span>
             <span className="header__optionLineTwo">{user?'SignOut':'Sign In'}</span>
           </div>
         </Link>
@@ -42,10 +44,10 @@ if(user){
         </div>
         </Link>
 
-        <div className="header__option">
+        {/* <div className="header__option">
           <span className="header__optionLineOne">Your</span>
           <span className="header__optionLineTwo">Prime</span>
-        </div>
+        </div> */}
         <Link to={user?"/checkout":"/login"}>
           <div className="header__optionBasket">
             <ShoppingBasketIcon />

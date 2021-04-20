@@ -4,13 +4,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 40px;
 }
 
 .login__logo {
   margin-top: 20px;
   margin-bottom: 20px;
   object-fit: contain;
-  width: 110px;
+  width: 130px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -28,10 +29,12 @@
 .login__container > h1 {
   font-weight: 500;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .login__container > form > h5 {
   margin-bottom: 5px;
+  text-align: center;
 }
 
 .login__container > form > input {
@@ -39,6 +42,11 @@
   margin-bottom: 10px;
   background-color: white;
   width: 98%;
+  border-radius: 20px;
+  text-align: center;
+}
+.login__container > form > input:focus{
+  border:hidden;
 }
 .login__container > p {
   margin-top: 15px;
@@ -46,8 +54,9 @@
 }
 
 .login__signInButton{
-    background:#f0c14b;
-    border-radius: 2px;
+    /* background:#f0c14b; */
+    background:#4ec998;
+    border-radius: 20px;
     width: 100%;
     height: 30px;
     border:1px solid;
@@ -55,8 +64,12 @@
     border-color: #a88734 #9c7e31 #846a29;
 
 }
-
-
+.login__signInButton:hover{
+  cursor: pointer;
+}
+.login__signInButton:focus{
+  border-radius: 20px;
+}
 .login__registerButton{
     border-radius: 2px;
     width:100%;
@@ -64,8 +77,14 @@
     border: 1px solid;
     margin-top: 10px;
     border-color: darkgray;
+    border-radius: 20px;
+}
+.login__registerButton:hover{
+  background:#4ec998;
+  cursor: pointer;
 }
 
-
-
+.login__registerButton:focus{
+  border-radius: 20px;
+}
 
